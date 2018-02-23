@@ -1,0 +1,22 @@
+{
+	"name": "litea/env",
+	"description": "Simply getter env variables",
+	"homepage": "https://gitlab.litea.cz/litea/env",
+	"license": [
+		"GPLv3"
+	],
+	"authors": [
+		{
+			"name": "Michal Odcházel",
+			"homepage": "https://www.litea.cz/"
+		}
+	],
+	"require": {
+		"php": "^7.1"
+	},
+	"autoload": {
+		"classmap": [
+			"src"
+		]
+	}
+}
