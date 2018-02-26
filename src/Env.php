@@ -44,7 +44,8 @@ class Env {
 	 * @return bool|int|null|string
 	 */
 	protected static function convert($value) {
-		$value = strtolower($value);
+		$origValue = $value;
+		$value     = strtolower($value);
 
 		switch ($value) {
 			case 'true':
@@ -61,7 +62,7 @@ class Env {
 			return (int)$value;
 		}
 
-		return $value;
+		return $origValue;
 	}
 
 }
