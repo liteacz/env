@@ -17,7 +17,7 @@ test:7.0:
   dependencies:
     - composer
   script:
-    - "tester test -s"
+    - "./vendor/bin/tester test -s"
   when: always
 
 test:7.1:
@@ -25,7 +25,7 @@ test:7.1:
   dependencies:
     - composer
   script:
-    - "tester test -s"
+    - "./vendor/bin/tester test -s"
   when: always
 
 test:7.2:
@@ -33,5 +33,5 @@ test:7.2:
   dependencies:
     - composer
   script:
-    - "tester test -s"
+    - "./vendor/bin/tester test -s"
   when: always
