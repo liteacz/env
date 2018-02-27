@@ -10,6 +10,8 @@ namespace Litea\Utils;
  */
 class Env {
 
+	const DELIMITER = ';';
+
 	/**
 	 * @param string $name
 	 * @param null   $default
@@ -19,7 +21,7 @@ class Env {
 	public static function get(string $name, $default = null) {
 		$value = getenv($name);
 		if ($value === false) {
-			return $default;
+			return self::convert($default);
 		}
 
 		return self::convert($value);
@@ -27,15 +29,19 @@ class Env {
 
 	/**
 	 * @param string $name
-	 * @param string $delimiter
 	 * @param null   $default
+	 * @param string $delimiter
 	 *
 	 * @return array
 	 */
-	public static function getArray(string $name, string $delimiter = ';', $default = null) {
-		$value = self::get($name . $default);
+	public static function getArray(string $name, $default = null, string $delimiter = self::DELIMITER): array {
+		$value = self::get($name, $default);
 
-		return explode($delimiter, $value);
+		if (is_string($default)) {
+			return explode($delimiter, $value);
+		}
+
+		return [];
 	}
 
 	/**
@@ -44,6 +50,14 @@ class Env {
 	 * @return bool|int|null|string
 	 */
 	protected static function convert($value) {
+		if ($value === null) {
+			return $value;
+		}
+
+		if (ctype_digit($value)) {
+			return (int)$value;
+		}
+
 		$origValue = $value;
 		$value     = strtolower($value);
 
@@ -58,9 +72,6 @@ class Env {
 				return null;
 		}
 
-		if (ctype_digit($value)) {
-			return (int)$value;
-		}
 
 		return $origValue;
 	}
