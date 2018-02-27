@@ -6,6 +6,7 @@ composer:
   stage: install
   image: composer:latest
   artifacts:
+    expire_in: 5 mins
     when: on_success
     paths:
       - ./vendor/
