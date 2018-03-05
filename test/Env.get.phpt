@@ -11,3 +11,7 @@ Assert::same('default', Env::get('ENVIRONMENT', 'default'));
 Assert::true(Env::get('ENVIRONMENT', 'true'));
 Assert::false(Env::get('ENVIRONMENT', 'false'));
 Assert::null(Env::get('ENVIRONMENT', 'null'));
+
+Assert::true(Env::get('ENVIRONMENT', true));
+Assert::false(Env::get('ENVIRONMENT', false));
+Assert::null(Env::get('ENVIRONMENT', null));

@@ -52,16 +52,13 @@ class Env {
 	protected static function convert($value) {
 		if ($value === null) {
 			return $value;
-		}
-
-		if (ctype_digit($value)) {
+		} else if (ctype_digit($value)) {
 			return (int)$value;
+		} else if (is_bool($value)) {
+			return $value;
 		}
 
-		$origValue = $value;
-		$value     = strtolower($value);
-
-		switch ($value) {
+		switch (strtolower($value)) {
 			case 'true':
 				return true;
 
@@ -73,7 +70,7 @@ class Env {
 		}
 
 
-		return $origValue;
+		return $value;
 	}
 
 }
