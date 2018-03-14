@@ -52,7 +52,7 @@ class Env {
 	protected static function convert($value) {
 		if ($value === null) {
 			return $value;
-		} else if (ctype_digit($value)) {
+		} else if (preg_match('/^[0-9]+$/', $value)) {
 			return (int)$value;
 		} else if (is_bool($value)) {
 			return $value;
