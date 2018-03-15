@@ -19,3 +19,5 @@ Assert::count(0, Env::getArray('EMAILS', true, Env::DELIMITER));
 $e = Assert::exception(function () {
 	Env::getArray('EMAILS', true, true);
 }, TypeError::class, 'Argument 3 passed to Litea\Utils\Env::getArray() must be of the type string, boolean given, called in %a% on line %d%');
+
+Assert::type('array', Env::getArray('ENVIRONMENT', 123456));

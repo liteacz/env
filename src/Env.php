@@ -54,7 +54,7 @@ class Env {
 			return $value;
 		} else if (is_bool($value)) {
 			return $value;
-		} else if (preg_match('/^[0-9]+$/', $value)) {
+		} else if (preg_match('/^[0-9]+$/', (string)$value)) {
 			return (int)$value;
 		}
 
