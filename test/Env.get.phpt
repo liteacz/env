@@ -19,3 +19,5 @@ Assert::null(Env::get('ENVIRONMENT', null));
 Assert::type('int', Env::get('ENVIRONMENT', 123456));
 Assert::type('int', Env::get('ENVIRONMENT', 0));
 Assert::same(0, Env::get('ENVIRONMENT', 0));
+
+Assert::same('02531348', Env::get('ENVIRONMENT', '02531348'));
