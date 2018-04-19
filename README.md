@@ -29,4 +29,9 @@ $env = Env::get('ENVIRONMENT') // if ENVIRONMENT "true || NULL || tRuE" -> trans
 $env = Env::get('ENVIRONMENT') // if ENVIRONMENT "null || NULL || NuLL" -> transfer to null
 $env = Env::get('ENVIRONMENT') // if ENVIRONMENT "15" -> transfer to int 15
 $env = Env::get('ENVIRONMENT', 'PROD') // get ENVIRONMENT and default is PROD
+
+// Or get array
+$env = Env::getArray('EMAILS') // in EMAILS is abc@litea.cz;ccc@litea.cz return ['abc@litea.cz', 'ccc@litea.cz']
+
+$env = Env::getArray('EMAILS' [deafult = null, [delimeter = ';']])
 ```
