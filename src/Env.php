@@ -37,7 +37,7 @@ class Env {
 	public static function getArray(string $name, $default = null, string $delimiter = self::DELIMITER): array {
 		$value = self::get($name, $default);
 
-		if (is_string($default)) {
+		if (is_string($value)) {
 			return explode($delimiter, $value);
 		}
 
