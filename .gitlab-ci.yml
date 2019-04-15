@@ -13,14 +13,6 @@ composer:
   script:
     - "composer update -a --prefer-dist --no-suggest --no-scripts --ignore-platform-reqs"
 
-test:7.0:
-  image: php:7.0
-  dependencies:
-    - composer
-  script:
-    - "./vendor/bin/tester test -s"
-  when: always
-
 test:7.1:
   image: php:7.1
   dependencies:
