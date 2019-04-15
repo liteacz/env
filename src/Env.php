@@ -60,6 +60,10 @@ class Env {
 			return (int)$value;
 		}
 
+        if(is_array($value)){
+            return null;
+        }
+
 		switch (strtolower($value)) {
 			case 'true':
 				return true;
