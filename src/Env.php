@@ -1,31 +1,27 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Litea\Utils;
 
-/**
- * Class Env
- *
- * @package Litea\Utils
- */
 class Env
 {
-
+    /** @var string */
     const DELIMITER = ';';
 
     /**
      * @param string $name
      * @param null   $default
-     *
      * @return bool|int|null|string
      */
     public static function get(string $name, $default = null)
     {
 
-        $value = getenv($name);
+        $value = \getenv($name);
         if ($value === false) {
-            return self::convert($default);
+            return $default;
+        } elseif (\is_array($value)) {
+            return $value;
         }
 
         return self::convert($value);
@@ -43,8 +39,8 @@ class Env
 
         $value = self::get($name, $default);
 
-        if (is_string($value)) {
-            return explode($delimiter, $value);
+        if (\is_string($value)) {
+            return \explode($delimiter, $value);
         }
 
         return [];
@@ -52,33 +48,19 @@ class Env
 
     /**
      * @param $value
-     *
      * @return bool|int|null|string
      */
-    protected static function convert($value)
+    protected static function convert(string $value)
     {
-
-        if ($value === null) {
+        if (\preg_match('/^[0]+[0-9]+$/', $value)) {
             return $value;
-        } else {
-            if (is_bool($value)) {
-                return $value;
-            } else {
-                if (preg_match('/^[0]+[0-9]+$/', (string)$value)) {
-                    return (string)$value;
-                } else {
-                    if (preg_match('/^[0-9]+$/', (string)$value)) {
-                        return (int)$value;
-                    }
-                }
-            }
+        } elseif (\preg_match('/^[0-9]+$/', $value)) {
+            return (int)$value;
+        } elseif (\preg_match('/^[0-9]+\.[0-9]+$/', $value)) {
+            return (float)$value;
         }
 
-        if (is_array($value)) {
-            return null;
-        }
-
-        switch (strtolower($value)) {
+        switch (\strtolower($value)) {
             case 'true':
                 return true;
 
@@ -89,8 +71,6 @@ class Env
                 return null;
         }
 
-
         return $value;
     }
-
 }

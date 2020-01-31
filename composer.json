@@ -3,7 +3,7 @@
 	"description": "Simply getter env variables",
 	"homepage": "https://gitlab.litea.cz/litea/env",
 	"license": [
-		"GPLv3"
+		"MIT"
 	],
 	"authors": [
 		{
@@ -12,11 +12,10 @@
 		}
 	],
 	"require": {
-		"php": "^7.0"
+		"php": "^7.2"
 	},
 	"require-dev": {
-		"nette/tester": "^2.0",
-		"tracy/tracy": "^2.4"
+		"phpunit/phpunit": "^8"
 	},
 	"autoload": {
 		"classmap": [

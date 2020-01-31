@@ -11,20 +11,12 @@ composer:
     paths:
       - ./vendor/
   script:
-    - "composer update -a --prefer-dist --no-suggest --no-scripts --ignore-platform-reqs"
+    - "composer install -a --prefer-dist --no-suggest --no-scripts --ignore-platform-reqs --no-progress"
 
-test:7.1:
-  image: php:7.1
+test:
+  image: registry.gitlab.litea.cz/images/php/7.3-fpm-alpine/dev:v2.5.1
   dependencies:
     - composer
   script:
-    - "./vendor/bin/tester test -s"
-  when: always
-
-test:7.2:
-  image: php:7.2
-  dependencies:
-    - composer
-  script:
-    - "./vendor/bin/tester test -s"
+    - php ./vendor/bin/phpunit --colors=never
   when: always
