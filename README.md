@@ -5,6 +5,9 @@
 
 This class is very simply for getting env variables
 
+## Maintainers
+- Michal Odcházel - michal.odchazel@litea.cz
+
 ## How to install
 
 `composer reqired litea/env`
