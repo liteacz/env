@@ -1,0 +1,14 @@
+version: "3"
+services:
+  php_dev:
+    image: liteacz/php:8.0-cli-v2.1.0
+    entrypoint: sleep infinite
+    environment:
+      COMPOSER_HOME: '/.composer'
+      COMPOSER_MEMORY_LIMIT: -1
+    volumes:
+      - .:/var/www
+      - composer-data:/.composer
+
+volumes:
+  composer-data:
