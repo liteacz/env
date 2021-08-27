@@ -7,15 +7,34 @@
 	],
 	"authors": [
 		{
+			"name": "Martin Hrubý"
+		},
+		{
 			"name": "Michal Odcházel",
 			"homepage": "https://www.litea.cz/"
 		}
 	],
 	"require": {
-		"php": "^7.2"
+		"php": "^7.2 || ^8.0"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^8"
+		"phpunit/phpunit": "^9",
+		"phpstan/phpstan": "^0.12.96",
+		"rector/rector": "^0.11.51",
+		"slevomat/coding-standard": "^7.0",
+		"squizlabs/php_codesniffer": "^3.6"
+	},
+	"scripts": {
+		"phpcs": "php vendor/bin/phpcs --version && php vendor/bin/phpcs --standard=ruleset.xml src",
+		"phpcbf": "php vendor/bin/phpcbf --version && php vendor/bin/phpcbf --standard=ruleset.xml src",
+		"phpstan": "php vendor/bin/phpstan --version && php -d memory_limit=-1 vendor/bin/phpstan analyse",
+		"tests": "php vendor/bin/phpunit -d memory_limit=-1 -c phpunit.xml",
+		"tests-coverage": [
+			"@putenv XDEBUG_MODE=coverage",
+			"php vendor/bin/phpunit -d memory_limit=-1 -c phpunit.xml --coverage-html var/coverage"
+		],
+		"rector": "php vendor/bin/rector --version && php vendor/bin/rector process",
+		"rector-dry": "php vendor/bin/rector --version && php vendor/bin/rector process --dry-run"
 	},
 	"autoload": {
 		"classmap": [

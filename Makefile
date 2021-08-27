@@ -1,6 +1,17 @@
-#!/usr/bin/env bash
+@all:
+	cat Makefile
 
-UID = $$(id -u)
+up:
+	./cmd.sh up
 
-runTests:
-	docker run -v ${PWD}:/data registry.gitlab.litea.cz/images/php/7.3-fpm-alpine/dev:v2.5.1 php ./vendor/bin/phpunit
+down:
+	./cmd.sh down
+
+restart:
+	./cmd.sh down && ./cmd.sh up
+
+logs:
+	./cmd.sh logs
+
+shell:
+	./cmd.sh shell

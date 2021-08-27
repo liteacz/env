@@ -1,0 +1,13 @@
+parameters:
+    bootstrapFiles:
+        - vendor/autoload.php
+    paths:
+        - src
+        - tests
+
+    tmpDir: var/cache/phpstan
+
+    # The level 8 is the highest level
+    level: 8
+
+    excludePaths:
